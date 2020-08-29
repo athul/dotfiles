@@ -11,11 +11,11 @@ echo "Chezmoi installed"
 
 echo "Chezmoi add dotfiles...."
 
-chezmoi init https://github.com/athul/dotfiles.git
+./bin/chezmoi init https://github.com/athul/dotfiles.git
 
-chezmoi update
+./bin/chezmoi update
 
-chezmoi apply
+./bin/chezmoi apply
 echo "Chezmoi Tasks completed"
 echo "---------"
 echo "Install Shelby"
