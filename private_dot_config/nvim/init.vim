@@ -1,18 +1,21 @@
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin('~/.localtshare/nvim/plugged')
 
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go'
-Plug 'rust-lang/rust.vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'mattn/emmet-vim'
 Plug 'wakatime/vim-wakatime'
+Plug 'romgrk/winteract.vim'
 Plug 'klen/python-mode'
 Plug 'scrooloose/nerdtree'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'ollykel/v-vim'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'rafalbromirski/vim-aurora'
+Plug 'voldikss/vim-floaterm'
+Plug 'mhinz/vim-startify'
+Plug 'itchyny/lightline.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/gv.vim'
+
 
 
 call plug#end()
@@ -30,12 +33,23 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-let g:airline_theme = "palenight"
-let g:palenight_terminal_italics=1
+let g:lightline = {
+      \ 'colorscheme': 'materia',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
+
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 
-
+set splitbelow
+set splitright
+set number relativenumber
 
 
 " -------------------------------------------------------------------------------------------------
@@ -104,3 +118,30 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+
+" -------------------- Remaps ----------------------
+
+" For clearing Search Highlighting
+nnoremap <silent> ,<space> :nohlsearch<CR> 
+" FloatTerm
+nmap fn :FloatermNew zsh<CR>
+nmap ft :FloatermToggle<CR>
+nmap fp :FloatermNext<CR>
+nmap fk :FloatermKill<CR>
+nmap fo :FloatermPrev<CR>
+"
+"-------------- Bindings
+"
+map <C-B> :NERDTreeToggle <CR>
+map nt :tabnew <CR>
+map <leader> NT :tabclose <CR>
+nmap wi :InteractiveWindow <CR>
+"
+"------ Terminal -----
+"
+tnoremap <C-Up> <C-\><C-n><C-W>k
+tnoremap <C-Down> <C-\><C-n><C-W>j
+tnoremap <C-Left> <C-\><C-n><C-W>h
+tnoremap <C-Right> <C-\><C-n><C-W>l
+tnoremap <ESC> <C-\><C-n>
