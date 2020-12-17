@@ -9,6 +9,7 @@ Plug 'romgrk/winteract.vim'
 Plug 'klen/python-mode'
 Plug 'scrooloose/nerdtree'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
 Plug 'rafalbromirski/vim-aurora'
 Plug 'voldikss/vim-floaterm'
 Plug 'mhinz/vim-startify'
@@ -135,7 +136,7 @@ nmap fo :FloatermPrev<CR>
 "
 map <C-B> :NERDTreeToggle <CR>
 map nt :tabnew <CR>
-map <leader> NT :tabclose <CR>
+map NT :tabclose <CR>
 nmap wi :InteractiveWindow <CR>
 "
 "------ Terminal -----
